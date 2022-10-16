@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".TasksFragment">
+      <data>
+          <variable
+              name="viewModel"
+              type="net.kartikchawla.tasks.TasksViewModel" />
+      </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskName"
+            android:inputType="text"
+            android:hint="Enter a task Name"
+            android:text="@={viewModel.newTaskName}">
+        </EditText>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveButton"
+            android:layout_gravity="center"
+            android:text="Save Task"
+            android:onClick="@{() -> viewModel.addTask()}">
+        </Button>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/deleteTaskID"
+            android:inputType="number"
+            android:hint="Enter task id to be deleted"
+            android:text="@={viewModel.deleteTaskID}"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete Task"
+            android:layout_gravity="center"
+            android:id="@+id/deleteTaskButton"
+            android:onClick="@{() -> viewModel.getAndDeleteTask()}"/>
+        <TextView
+            android:id="@+id/task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.tasksString}">
+        </TextView>
+    </LinearLayout>
+</layout>
